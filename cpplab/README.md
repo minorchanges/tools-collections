@@ -1,5 +1,5 @@
-# qt-threadmod
-QT project that shows how an external thread can modify a QT Widget via signals/slots in a thread-safe way
+# minimalexample
+Most basic template. Start here.
 
 # Build
 

@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QThread>
+#include <atomic>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -12,6 +13,9 @@ QT_END_NAMESPACE
 class Worker : public QObject
 {
     Q_OBJECT
+
+public:
+    std::atomic_bool m_cancelFlag;
 
 public slots:
     void onWorkStarted();
@@ -49,4 +53,5 @@ private:
     void setProgressLabeltext(const QString& text);
     void setProgressBarValue(int progress);
     void setButtonEnabled(bool enabled);
+
 };

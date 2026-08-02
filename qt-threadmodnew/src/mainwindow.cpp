@@ -21,7 +21,8 @@ void Worker::startProcess()
         [this](int progress)
         {
             emit progressChanged(progress);
-        }
+        },
+        &m_cancelFlag
     );
 
     emit progressChanged(100);
@@ -80,9 +81,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    worker->m_cancelFlag = true;
     workerThread->quit();
     workerThread->wait();
-
     delete ui;
 }
 
