@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(cpplab LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -12,7 +12,7 @@ else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-set(sourceFiles
+add_executable(cpplab 
     src/HelperClass/HelperClass.cpp
     src/HelperClass/HelperClass.hpp
     src/tools/timer.h
@@ -20,11 +20,8 @@ set(sourceFiles
     src/main.cpp
 )
 
-set(includeDirs
+target_include_directories(cpplab PRIVATE 
     src/
     src/HelperClass/
     src/tools
 )
-
-add_executable(cpplab ${sourceFiles})
-target_include_directories(cpplab PRIVATE ${includeDirs})
